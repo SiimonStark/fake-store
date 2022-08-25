@@ -1,3 +1,23 @@
+# I'm Justin Pyktel,
+
+Dear Reviewer, I'll be using this ReadME to leave notes for you and myself.
+
+---
+
+## STEPS
+
+- I noticed that there is an incomplete signin page, so start to build out the basic state for the component and dispatch to login func().
+- Also update the Nav to reflect signin/signon based on Store
+- 
+
+---
+
+### Research
+
+[Nextjs w/ Redux Blog](https://blog.logrocket.com/use-redux-next-js/)
+
+---
+
 ## Bargreen Technical Challenge
 
 This is a simple website built using NextJS, React, Redux, and Typescript that queries data from [Fake Store API](https://fakestoreapi.com/). 
