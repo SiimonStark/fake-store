@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { rejects } from 'assert';
+import { resolve } from 'path';
 
 export const appSlice = createSlice({
   name: 'app',
@@ -47,11 +49,34 @@ export const login = async (username, password) => {
   console.log(users);
 
   const user = users.find(user => user.username === username && user.password === password);
-  console.log(user);
+  console.log({ user });
 
   const cart = await fetch('https://fakestoreapi.com/carts/user/2')
-    .then(res => res.json());
-  console.log(cart);
+    .then(res => res.json())
+    .then(data => data[0])
+  console.log({ cart });
+
+  const getProductDetail = (product, url) => {
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then(res => res.json())
+        .then(data => resolve({ ...data, quantity: product.quantity }));
+    });
+  }
+
+  let productRequests = [];
+
+  cart.products.forEach((p, i) => {
+    productRequests.push(
+      getProductDetail(p, 'https://fakestoreapi.com/products/' + p.productId));
+  });
+
+  let productDetails = await Promise.all(productRequests)
+    .then((allProductData) => allProductData);
+
+  console.log({ productDetails });
+
+
 
   async (dispatch) => {
     console.log({ username, password });
