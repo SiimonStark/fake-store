@@ -6,9 +6,12 @@ Dear Reviewer, I'll be using this ReadME to leave notes for you and myself.
 
 ## STEPS
 
-- I noticed that there is an incomplete signin page, so start to build out the basic state for the component and dispatch to login func().
+- I noticed that there is an incomplete signin page, so start to build out the basic state for the component and dispatch to login func()
 - Also update the Nav to reflect signin/signon based on Store
-- 
+- Issue with CORS for access token
+  - Pivot and pull all users, and match login credentials to find correct user
+- Once user is found, set store value to user
+- If user is logged in, apply their cart, else new temporary cart
 
 ---
 

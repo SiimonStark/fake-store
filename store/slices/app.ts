@@ -51,7 +51,7 @@ export const login = async (username, password) => {
   const user = users.find(user => user.username === username && user.password === password);
   console.log({ user });
 
-  const cart = await fetch('https://fakestoreapi.com/carts/user/2')
+  const cart = await fetch('https://fakestoreapi.com/carts/user/' + user.id)
     .then(res => res.json())
     .then(data => data[0])
   console.log({ cart });
@@ -75,8 +75,6 @@ export const login = async (username, password) => {
     .then((allProductData) => allProductData);
 
   console.log({ productDetails });
-
-
 
   async (dispatch) => {
     console.log({ username, password });
